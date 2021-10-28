@@ -30,6 +30,6 @@ This neural network is using PyTorch and Torchvision to tell diffirent species o
 
 — Сыроежка
 
-The names are in Russian, because the algorithm is focus on the use inside the borders of Siberia in Russia.
+The names are in Russian, because the algorithm is focused on the use inside the borders of Siberia in Russia.
 
 ### *Telegram-bot is upcoming. Early development.*
