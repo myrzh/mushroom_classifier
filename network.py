@@ -174,13 +174,21 @@ evaluate(model, test_dataiter, 'test')
 
 torch.save(model, 'mushroom_model.pt')
 
-"""##Загрузка модели из файла"""
+"""##Тест дообученной модели на одной картинке (собственно юзкейс)"""
+
+from google.colab import files
+
+uploaded = files.upload()
 
 model_new = torch.load('mushroom_model.pt')
 
-test_dataiter = iter(test_loader)
-evaluate(model_new, test_dataiter, 'test')
+img_test = Image.open("/content/openok.jpeg")
+img_tensor = resnet_transforms(img_test)
+img_tensor.shape
 
-!pip install pipreqs
+img_tensor = img_tensor.view(1, 3, 224, 224)
 
-!pipreqs /content/
+output = model_new(img_tensor)
+
+prediction_new = int(torch.max(output.data, 1)[1].numpy())
+print(prediction_new)
